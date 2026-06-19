@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>RainMod</AssemblyName>
+    <Product>NuclearRain</Product>
+    <Version>0.2.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json;
+      https://nuget.samboy.dev/v3/index.json
+    </RestoreAdditionalProjectSources>
+    <RootNamespace>NuclearRain</RootNamespace>
+    <!-- Game assembly path - can be overridden via environment variables or Directory.Build.props -->
+    <GameAssemblyPath Condition="'$(GameAssemblyPath)' == ''">..\..\COMPILER_HERE\game</GameAssemblyPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Core" Version="5.*" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+    <PackageReference Include="UnityEngine.Modules" Version="2019.4.40" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(GameAssemblyPath)\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mirage">
+      <HintPath>$(GameAssemblyPath)\Mirage.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\textures\rain.png" LogicalName="NuclearRain.rain.png" />
+    <EmbeddedResource Include="..\textures\snow.png" LogicalName="NuclearRain.snow.png" />
+    <EmbeddedResource Include="..\textures\rain_anim.png" LogicalName="NuclearRain.rain_anim.png" />
+    <EmbeddedResource Include="..\textures\rainwall.png" LogicalName="NuclearRain.rainwall.png" />
+    <EmbeddedResource Include="..\textures\mist.png" LogicalName="NuclearRain.mist.png" />
+    <EmbeddedResource Include="..\textures\fog_translucent.png" LogicalName="NuclearRain.fog_translucent.png" />
+    <EmbeddedResource Include="..\textures\fog_dithered.png" LogicalName="NuclearRain.fog_dithered.png" />
+    <EmbeddedResource Include="..\textures\streak.png" LogicalName="NuclearRain.streak.png" />
+  </ItemGroup>
+
+</Project>
